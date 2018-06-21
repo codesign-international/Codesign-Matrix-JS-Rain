@@ -36,11 +36,11 @@ function text() {
  document.body.appendChild(offscreenCanvas);
  var octx = offscreenCanvas.getContext("2d");
  octx.textAlign = "center";
- octx.shadowColor = "lightgreen";
+ octx.shadowColor = "cyan";
  octx.shadowOffsetX = 2;
  octx.shadowOffsetY = -5;
  octx.shadowBlur = 1;
- octx.fillStyle = "darkgreen";
+ octx.fillStyle = "blue";
  octx.textAlign = "left";
  var step = 10;
  for (i = 0; i < 100; i++) {
@@ -53,3 +53,18 @@ function text() {
  }
  return offscreenCanvas;
 }
+
+ // resize the canvas to fill browser window dynamically
+ window.addEventListener('resize', resizeCanvas, false);
+
+ function resizeCanvas() {
+         canvas.width = window.innerWidth;
+         canvas.height = window.innerHeight;
+
+         /**
+          * Your drawings need to be inside this function otherwise they will be reset when 
+          * you resize the browser window and the canvas goes will be cleared.
+          */
+         drawStuff(); 
+ }
+ resizeCanvas();
